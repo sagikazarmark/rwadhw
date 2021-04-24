@@ -18,6 +18,6 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard');
 
 require __DIR__.'/auth.php';
