@@ -12,12 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                        {{ __('About') }}
-                    </x-nav-link>
+                    @foreach($menu as $item)
+                        <x-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])">
+                            {{ __($item['title']) }}
+                        </x-nav-link>
+                    @endforeach
                 </div>
             </div>
 
@@ -38,19 +37,19 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            @if (auth()->user()->isAdmin())
-                                <x-dropdown-link :href="route('dashboard')">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
-                            @endif
-                            <x-dropdown-link :href="route('logout')">
-                                {{ __('Log out') }}
-                            </x-dropdown-link>
+                            @foreach($dropdown_menu as $item)
+                                @if (auth()->user()->isAdmin() || empty($item['isAdminRequired']))
+                                    <x-dropdown-link :href="route($item['route'])">
+                                        {{ __($item['title']) }}
+                                    </x-dropdown-link>
+                                @endif
+                            @endforeach
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    @foreach($right_menu as $item)
+                        <a href="{{ route($item['route']) }}" class="ml-4 text-sm text-gray-700 underline">{{ $item['title'] }}</a>
+                    @endforeach
                 @endauth
             </div>
 
@@ -69,12 +68,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Home') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                {{ __('About') }}
-            </x-responsive-nav-link>
+            @foreach($menu as $item)
+                <x-responsive-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])">
+                    {{ __($item['title']) }}
+                </x-responsive-nav-link>
+            @endforeach
         </div>
 
         @auth
@@ -94,16 +92,14 @@
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
 
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log out') }}
-                        </x-responsive-nav-link>
-                    </form>
+                    @foreach($dropdown_menu as $item)
+                        @if (auth()->user()->isAdmin() || empty($item['isAdminRequired']))
+                            <x-responsive-nav-link :href="route($item['route'])">
+                                {{ __($item['title']) }}
+                            </x-responsive-nav-link>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         @endauth
