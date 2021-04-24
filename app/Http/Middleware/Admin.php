@@ -14,7 +14,7 @@ final class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    final public function handle(Request $request, Closure $next)
     {
         if (!$request->user()->isAdmin()) {
             return redirect()->route('home');

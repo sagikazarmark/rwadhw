@@ -8,7 +8,7 @@ final class HomeController extends Controller {
      *
      * @return \Illuminate\View\View
      */
-    public function home()
+    final public function home()
     {
         return view('home');
     }
