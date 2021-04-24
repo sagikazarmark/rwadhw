@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageMail;
 use App\Models\ContactMessage;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 final class ContactController extends Controller {
     /**
@@ -32,10 +34,12 @@ final class ContactController extends Controller {
             'message' => 'required|string',
         ]);
 
-        ContactMessage::create([
+        $message = ContactMessage::create([
             'name' => $request->name,
             'message' => $request->message,
         ]);
+
+        Mail::to(config('custom.admin_email'))->send(new ContactMessageMail($message));
 
         session()->flash('status', 'Message successfully sent to the administrators!');
 
