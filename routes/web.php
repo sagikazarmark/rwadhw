@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'admin'])->name('dashboard');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store']);
+
+Route::get('/dashboard', [Dashboard\HomeController::class, 'home'])->name('dashboard');
+Route::get('/dashboard/contact-messages', [Dashboard\HomeController::class, 'contactMessages'])->name('dashboard.contactMessages');
 
 require __DIR__.'/auth.php';
