@@ -30,13 +30,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('symfonyftw123**'),
             'role' => 1,
         ]);
-
-        DB::table('users')->insert([
-            'name' => 'Guest Gábor',
-            'email' => 'guest@rwadhw.sagikazarmark.hu',
-            'email_verified_at' => now(),
-            'password' => Hash::make('symfonyftw123**'),
-            'role' => 2,
-        ]);
     }
 }
