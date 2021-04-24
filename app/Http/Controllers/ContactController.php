@@ -37,6 +37,8 @@ final class ContactController extends Controller {
             'message' => $request->message,
         ]);
 
+        session()->flash('status', 'Message successfully sent to the administrators!');
+
         return redirect()->route('contact');
     }
 }
