@@ -1,4 +1,4 @@
-@props(['active'])
+@props(['active', 'item'])
 
 @php
 $classes = ($active ?? false)
@@ -9,3 +9,12 @@ $classes = ($active ?? false)
 <a {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </a>
+@if (!empty($item['submenu']))
+
+    @foreach ($item['submenu'] as $submenu_item)
+        <x-responsive-nav-link :href="route($submenu_item['route'])" :active="request()->routeIs($submenu_item['route'])" :item="$submenu_item">
+            {{ __($submenu_item['title']) }}
+        </x-responsive-nav-link>
+    @endforeach
+
+@endif

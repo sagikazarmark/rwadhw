@@ -37,11 +37,9 @@
 
                     <x-slot name="content">
                         @foreach($dropdown_menu as $item)
-                            @if (auth()->user()->isAdmin() || empty($item['isAdminRequired']))
-                                <x-dropdown-link :href="route($item['route'])">
-                                    {{ __($item['title']) }}
-                                </x-dropdown-link>
-                            @endif
+                            <x-dropdown-link :href="route($item['route'])">
+                                {{ __($item['title']) }}
+                            </x-dropdown-link>
                         @endforeach
                     </x-slot>
                 </x-dropdown>
