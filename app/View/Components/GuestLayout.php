@@ -12,16 +12,20 @@ class GuestLayout extends Component
             'route' => 'home',
         ],
         [
-            'title' => 'About Mrak',
+            'title' => 'About',
             'route' => 'about',
             'submenu' => [
                 [
-                    'title' => 'Profiles',
+                    'title' => 'Foundation',
+                    'route' => 'about',
+                ],
+                [
+                    'title' => 'Staff',
                     'route' => 'about',
                     'submenu' => [
                         [
-                            'title' => 'GitHub',
-                            'route' => 'about',
+                            'title' => 'Board members',
+                            'route' => 'boardMembers',
                         ],
                         [
                             'title' => 'PornHub',
@@ -29,14 +33,6 @@ class GuestLayout extends Component
                             'requiredRole' => [0,],
                         ],
                     ],
-                ],
-                [
-                    'title' => 'Home',
-                    'route' => 'home',
-                ],
-                [
-                    'title' => 'Home',
-                    'route' => 'home',
                 ],
             ],
         ],
