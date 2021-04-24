@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@rwadhw.sagikazarmark.hu',
             'email_verified_at' => now(),
             'password' => Hash::make('symfonyftw123**'),
+            'role' => 0,
         ]);
 
         DB::table('users')->insert([
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'user@rwadhw.sagikazarmark.hu',
             'email_verified_at' => now(),
             'password' => Hash::make('symfonyftw123**'),
+            'role' => 1,
         ]);
 
         DB::table('users')->insert([
@@ -34,6 +36,7 @@ class UserSeeder extends Seeder
             'email' => 'guest@rwadhw.sagikazarmark.hu',
             'email_verified_at' => now(),
             'password' => Hash::make('symfonyftw123**'),
+            'role' => 2,
         ]);
     }
 }
