@@ -25,4 +25,12 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::get('/dashboard', [Dashboard\HomeController::class, 'home'])->name('dashboard');
 Route::get('/dashboard/contact-messages', [Dashboard\HomeController::class, 'contactMessages'])->name('dashboard.contactMessages');
 
+Route::get('/dashboard/board-members', [Dashboard\BoardMemberController::class, 'index'])->name('dashboard.boardMembers');
+Route::get('/dashboard/board-members/create', [Dashboard\BoardMemberController::class, 'create'])->name('dashboard.boardMembers.create');
+Route::get('/dashboard/board-members/{id}', [Dashboard\BoardMemberController::class, 'show'])->name('dashboard.boardMember');
+Route::post('/dashboard/board-members', [Dashboard\BoardMemberController::class, 'store']);
+Route::get('/dashboard/board-members/{id}/edit', [Dashboard\BoardMemberController::class, 'edit'])->name('dashboard.boardMembers.edit');
+Route::put('/dashboard/board-members/{id}', [Dashboard\BoardMemberController::class, 'update']);
+Route::delete('/dashboard/board-members/{id}', [Dashboard\BoardMemberController::class, 'destroy']);
+
 require __DIR__.'/auth.php';

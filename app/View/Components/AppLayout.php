@@ -15,6 +15,10 @@ class AppLayout extends Component
             'title' => 'Contact messages',
             'route' => 'dashboard.contactMessages',
         ],
+        [
+            'title' => 'Board members',
+            'route' => 'dashboard.boardMembers',
+        ],
     ];
 
     public $dropdown_menu = [
