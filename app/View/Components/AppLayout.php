@@ -19,6 +19,10 @@ class AppLayout extends Component
             'title' => 'Board members',
             'route' => 'dashboard.boardMembers',
         ],
+        [
+            'title' => 'Volunteers',
+            'route' => 'dashboard.volunteers',
+        ],
     ];
 
     public $dropdown_menu = [

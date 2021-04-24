@@ -31,7 +31,7 @@ final class BoardMemberController extends Controller
     }
 
     /**
-     * Handle an incoming contact request.
+     * Handle a new board member.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse

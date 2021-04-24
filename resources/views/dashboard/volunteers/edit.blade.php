@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Board Members') }} > {{ __('Edit') }} #{{ $boardMember->id }}
+            {{ __('Volunteers') }} > {{ __('Edit') }} #{{ $volunteer->id }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <!-- Validation Errors -->
                     <x-dashboard-validation-errors class="mb-4" :errors="$errors"/>
 
-                    <form method="POST" action="{{ route('dashboard.boardMember', ['id' => $boardMember->id]) }}">
+                    <form method="POST" action="{{ route('dashboard.volunteer', ['id' => $volunteer->id]) }}">
                         @csrf
                         @method("PUT")
 
@@ -20,7 +20,7 @@
                             <x-label for="name" :value="__('Name')"/>
 
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                     value="{{ $boardMember->name }}" required autofocus/>
+                                     value="{{ $volunteer->name }}" required autofocus/>
                         </div>
 
                         <div class="mt-4">
@@ -29,17 +29,17 @@
                             <x-input id="email" class="block mt-1 w-full"
                                      type="email"
                                      name="email"
-                                     value="{{ $boardMember->email }}"
+                                     value="{{ $volunteer->email }}"
                                      required/>
                         </div>
 
                         <div class="mt-4">
                             <x-label for="address" :value="__('Address')"/>
 
-                            <x-input id="address" class="block mt-1 w-full"
-                                     type="text"
-                                     name="address"
-                                     value="{{ $boardMember->address }}"
+                            <x-input id="rank" class="block mt-1 w-full"
+                                     type="number"
+                                     name="rank"
+                                     value="{{ $volunteer->rank }}"
                                      required/>
                         </div>
 

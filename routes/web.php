@@ -38,4 +38,12 @@ Route::get('/dashboard/board-members/{id}/edit', [Dashboard\BoardMemberControlle
 Route::put('/dashboard/board-members/{id}', [Dashboard\BoardMemberController::class, 'update']);
 Route::delete('/dashboard/board-members/{id}', [Dashboard\BoardMemberController::class, 'destroy']);
 
+Route::get('/dashboard/volunteers', [Dashboard\VolunteerController::class, 'index'])->name('dashboard.volunteers');
+Route::get('/dashboard/volunteers/create', [Dashboard\VolunteerController::class, 'create'])->name('dashboard.volunteers.create');
+Route::get('/dashboard/volunteers/{id}', [Dashboard\VolunteerController::class, 'show'])->name('dashboard.volunteer');
+Route::post('/dashboard/volunteers', [Dashboard\VolunteerController::class, 'store']);
+Route::get('/dashboard/volunteers/{id}/edit', [Dashboard\VolunteerController::class, 'edit'])->name('dashboard.volunteers.edit');
+Route::put('/dashboard/volunteers/{id}', [Dashboard\VolunteerController::class, 'update']);
+Route::delete('/dashboard/volunteers/{id}', [Dashboard\VolunteerController::class, 'destroy']);
+
 require __DIR__.'/auth.php';
