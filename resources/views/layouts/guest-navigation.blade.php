@@ -13,9 +13,15 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @foreach($menu as $item)
-                        <x-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])" :item="$item">
-                            {{ __($item['title']) }}
-                        </x-nav-link>
+                        @if (!empty($item['submenu']))
+                            <x-nav-link :item="$item">
+                                {{ __($item['title']) }}
+                            </x-nav-link>
+                        @else
+                            <x-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])" :item="$item">
+                                {{ __($item['title']) }}
+                            </x-nav-link>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -38,7 +44,7 @@
 
                         <x-slot name="content">
                             @foreach($dropdown_menu as $item)
-                                @if (empty($item['requiredRole']) || in_array(auth()->user()->role, $item['requiredRole']))
+                                @if (empty($item['requiredRole']) || (!empty(auth()->user()) && in_array(auth()->user()->role, $item['requiredRole'])))
                                     <x-dropdown-link :href="route($item['route'])">
                                         {{ __($item['title']) }}
                                     </x-dropdown-link>
@@ -69,9 +75,15 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @foreach($menu as $item)
-                <x-responsive-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])" :item="$item">
-                    {{ __($item['title']) }}
-                </x-responsive-nav-link>
+                @if (!empty($item['submenu']))
+                    <x-responsive-nav-link :item="$item">
+                        {{ __($item['title']) }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])" :item="$item">
+                        {{ __($item['title']) }}
+                    </x-responsive-nav-link>
+                @endif
             @endforeach
         </div>
 
@@ -94,7 +106,7 @@
                 <div class="mt-3 space-y-1">
 
                     @foreach($dropdown_menu as $item)
-                        @if (empty($item['requiredRole']) || in_array(auth()->user()->role, $item['requiredRole']))
+                        @if (empty($item['requiredRole']) || (!empty(auth()->user()) && in_array(auth()->user()->role, $item['requiredRole'])))
                             <x-responsive-nav-link :href="route($item['route'])" :item="$item">
                                 {{ __($item['title']) }}
                             </x-responsive-nav-link>
