@@ -45,7 +45,7 @@
                         <x-slot name="content">
                             @foreach($dropdown_menu as $item)
                                 @if (empty($item['requiredRole']) || (!empty(auth()->user()) && in_array(auth()->user()->role, $item['requiredRole'])))
-                                    <x-dropdown-link :href="route($item['route'])">
+                                    <x-dropdown-link :item="$item">
                                         {{ __($item['title']) }}
                                     </x-dropdown-link>
                                 @endif
@@ -80,7 +80,7 @@
                         {{ __($item['title']) }}
                     </x-responsive-nav-link>
                 @else
-                    <x-responsive-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])" :item="$item">
+                    <x-responsive-nav-link :item="$item">
                         {{ __($item['title']) }}
                     </x-responsive-nav-link>
                 @endif
@@ -107,7 +107,7 @@
 
                     @foreach($dropdown_menu as $item)
                         @if (empty($item['requiredRole']) || (!empty(auth()->user()) && in_array(auth()->user()->role, $item['requiredRole'])))
-                            <x-responsive-nav-link :href="route($item['route'])" :item="$item">
+                            <x-responsive-nav-link :item="$item">
                                 {{ __($item['title']) }}
                             </x-responsive-nav-link>
                         @endif

@@ -37,7 +37,7 @@
 
                     <x-slot name="content">
                         @foreach($dropdown_menu as $item)
-                            <x-dropdown-link :href="route($item['route'])">
+                            <x-dropdown-link :item="$item">
                                 {{ __($item['title']) }}
                             </x-dropdown-link>
                         @endforeach
@@ -61,7 +61,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @foreach($menu as $item)
-                <x-responsive-nav-link :href="route($item['route'])" :active="request()->routeIs($item['route'])">
+                <x-responsive-nav-link :item="$item">
                     {{ __($item['title']) }}
                 </x-responsive-nav-link>
             @endforeach
@@ -84,7 +84,7 @@
 
             <div class="mt-3 space-y-1">
                 @foreach($dropdown_menu as $item)
-                    <x-responsive-nav-link :href="route($item['route'])">
+                    <x-responsive-nav-link :item="$item">
                         {{ __($item['title']) }}
                     </x-responsive-nav-link>
                 @endforeach

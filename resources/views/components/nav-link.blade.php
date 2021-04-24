@@ -23,7 +23,7 @@ $classes = ($active ?? false)
         <x-slot name="content">
             @foreach($item['submenu'] as $submenu_item)
                 @if (empty($submenu_item['requiredRole']) || (!empty(auth()->user()) && in_array(auth()->user()->role, $submenu_item['requiredRole'])))
-                    <x-dropdown-link :href="route($submenu_item['route'])" :item="$submenu_item">
+                    <x-dropdown-link :item="$submenu_item">
                         {{ __($submenu_item['title']) }}
                     </x-dropdown-link>
                 @endif

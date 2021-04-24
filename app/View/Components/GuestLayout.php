@@ -13,7 +13,6 @@ class GuestLayout extends Component
         ],
         [
             'title' => 'About',
-            'route' => 'about',
             'submenu' => [
                 [
                     'title' => 'Foundation',
@@ -21,7 +20,6 @@ class GuestLayout extends Component
                 ],
                 [
                     'title' => 'Staff',
-                    'route' => 'about',
                     'submenu' => [
                         [
                             'title' => 'Board members',
@@ -35,6 +33,10 @@ class GuestLayout extends Component
                     ],
                 ],
             ],
+        ],
+        [
+            'title' => 'Photos',
+            'route' => 'photos',
         ],
         [
             'title' => 'Contact',
