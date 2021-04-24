@@ -26,6 +26,8 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store']);
 
 Route::get('/photos', [PhotoController::class, 'index'])->name('photos');
+Route::get('/photos/upload', [PhotoController::class, 'upload_form'])->middleware('auth')->name('photos.uploadForm');
+Route::post('/photos/upload', [PhotoController::class, 'upload_save'])->middleware('auth')->name('photos.uploadSave');
 
 Route::get('/dashboard', [Dashboard\HomeController::class, 'home'])->name('dashboard');
 Route::get('/dashboard/contact-messages', [Dashboard\HomeController::class, 'contactMessages'])->name('dashboard.contactMessages');

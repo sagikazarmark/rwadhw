@@ -1,3 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.grid-rows-lightbox {
+    grid-template-rows: 3rem 1fr 3rem;
+}

@@ -3802,6 +3802,39 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+window.alpineLightbox = function () {
+  return {
+    src: '',
+    alt: '',
+    isOpen: false,
+    // One transparent pixel, to prevent broken img src:
+    pixel: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
+    open: function open($event) {
+      // Get the clicked-on thumbnail
+      var img = $event.target; // Set the lightbox image src to the fullsize image
+
+      this.src = img.getAttribute('data-fullsize'); // Set the lightbox image alt attribute
+
+      this.alt = img.getAttribute('alt');
+      this.isOpen = true; // Prevent the window from scrolling
+
+      var html = document.documentElement;
+      html.classList.add('h-screen', 'overflow-hidden', 'scroll-none');
+    },
+    close: function close() {
+      // Close lightbox
+      this.isOpen = false; // Return lightbox img src to transparent pixel
+
+      this.src = this.pixel; // Remove lightbox img alt attribute
+
+      this.alt = ''; // Return window to its normal state
+
+      var html = document.documentElement;
+      html.classList.remove('h-screen', 'overflow-hidden', 'scroll-none');
+    }
+  };
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
