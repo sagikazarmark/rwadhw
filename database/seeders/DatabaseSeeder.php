@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ContactMessageSeeder::class,
             BoardMemberSeeder::class,
+            VolunteerSeeder::class,
         ]);
     }
 }

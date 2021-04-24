@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BoardMember;
+use App\Models\Volunteer;
 
-final class HomeController extends Controller {
+final class HomeController extends Controller
+{
     /**
      * Display the home page.
      *
@@ -16,13 +18,13 @@ final class HomeController extends Controller {
     }
 
     /**
-     * Display the about page.
+     * Display the foundation page.
      *
      * @return \Illuminate\View\View
      */
-    final public function about()
+    final public function foundation()
     {
-        return view('about');
+        return view('foundation');
     }
 
     /**
@@ -35,5 +37,17 @@ final class HomeController extends Controller {
         $boardMembers = BoardMember::get();
 
         return view('boardMembers', ['boardMembers' => $boardMembers]);
+    }
+
+    /**
+     * Display the volunteers page.
+     *
+     * @return \Illuminate\View\View
+     */
+    final public function volunteers()
+    {
+        $volunteers = Volunteer::get();
+
+        return view('volunteers', ['volunteers' => $volunteers]);
     }
 }

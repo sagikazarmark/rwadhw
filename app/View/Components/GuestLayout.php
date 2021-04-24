@@ -16,7 +16,7 @@ class GuestLayout extends Component
             'submenu' => [
                 [
                     'title' => 'Foundation',
-                    'route' => 'about',
+                    'route' => 'foundation',
                 ],
                 [
                     'title' => 'Staff',
@@ -26,9 +26,9 @@ class GuestLayout extends Component
                             'route' => 'boardMembers',
                         ],
                         [
-                            'title' => 'PornHub',
-                            'route' => 'about',
-                            'requiredRole' => [0,],
+                            'title' => 'Volunteers',
+                            'route' => 'volunteers',
+                            'requiredRole' => [0,1],
                         ],
                     ],
                 ],

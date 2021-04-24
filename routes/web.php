@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/foundation', [HomeController::class, 'foundation'])->name('foundation');
+Route::get('/board-members', [HomeController::class, 'boardMembers'])->name('boardMembers');
+Route::get('/volunteers', [HomeController::class, 'volunteers'])->middleware('auth')->name('volunteers');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store']);
+
+Route::get('/photos', [PhotoController::class, 'index'])->name('photos');
 
 Route::get('/dashboard', [Dashboard\HomeController::class, 'home'])->name('dashboard');
 Route::get('/dashboard/contact-messages', [Dashboard\HomeController::class, 'contactMessages'])->name('dashboard.contactMessages');
